@@ -8,16 +8,19 @@ function Toggle() {
   };
   return (
     <div className="toggleContainer">
-      <div
-        className={`toggle ${toggle ? "toggle-checked" : ""}`}
-        onClick={onClick}
-      >
+      <div className="title">Toggle</div>
+      <div className="contentContainer">
         <div
-          className={`toggleCircle ${toggle ? "toggleCircle-checked" : ""}`}
-        ></div>
-      </div>
+          className={`toggle ${toggle ? "toggle-checked" : ""}`}
+          onClick={onClick}
+        >
+          <div
+            className={`toggleCircle ${toggle ? "toggleCircle-checked" : ""}`}
+          ></div>
+        </div>
 
-      <div>{toggle ? "Toggle Switch ON" : "Toggle Switch OFF"}</div>
+        <div>{toggle ? "Toggle Switch ON" : "Toggle Switch OFF"}</div>
+      </div>
     </div>
   );
 }

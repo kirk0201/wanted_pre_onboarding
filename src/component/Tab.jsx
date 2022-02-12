@@ -17,7 +17,6 @@ export default function Tab() {
     setTab({ ...tab, tab3: !tab.tab3, tab1: false, tab2: false });
   };
 
-  console.log(tab);
   return (
     <div className="tabContainer">
       <nav className="tabNav">

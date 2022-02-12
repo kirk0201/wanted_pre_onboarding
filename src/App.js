@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./App.scss";
 import Autocomplete from "./component/Autocomplete";
+import ClickToEdit from "./component/ClickToEdit";
 import Modal from "./component/Modal";
 import Tab from "./component/Tab";
 import Tag from "./component/Tag";
@@ -13,21 +14,22 @@ function App() {
   const ref = useRef();
 
   const onMouseDown = (e) => {
+    console.log(e.clientX, e.clientY);
+
     setCursorX((prev) => {
-      if (prev === e.pageX) {
+      if (prev === e.clientX) {
         ref.current.style = `left:${cursorX};`;
-      } else {
-        return e.pageX;
-      }
+      } else return e.clientX;
     });
     setCursorY((prev) => {
-      if (prev === e.pageY) {
+      if (prev === e.clientY) {
         ref.current.style = `top:${cursorY};`;
-      } else {
-        return e.pageY;
-      }
+      } else return e.clientY;
     });
-    console.log(e, cursorX, cursorY);
+
+    ref.current.style = `left:${cursorX};`;
+    ref.current.style = `top:${cursorY};`;
+
     ref.current.style = `display:block;`;
   };
   const onMouseUp = () => (ref.current.style = `display: none;`);
@@ -47,6 +49,7 @@ function App() {
       <Tab />
       <Tag />
       <Autocomplete />
+      <ClickToEdit />
     </div>
   );
 }

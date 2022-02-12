@@ -9,10 +9,13 @@ export default function Modal() {
   };
   return (
     <div className="modalContainer">
-      <button className="modalButton" onClick={onClick}>
-        Open Modal
-      </button>
-      {modal ? <ModalWindow onClick={onClick} /> : ""}
+      <div className="title">Modal</div>
+      <div className="contentContainer">
+        <button className="modalButton" onClick={onClick}>
+          Open Modal
+        </button>
+        {modal ? <ModalWindow onClick={onClick} /> : ""}
+      </div>
     </div>
   );
 }

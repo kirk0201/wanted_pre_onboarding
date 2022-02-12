@@ -1,39 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./Autocomplete.scss";
 
-const datas = [
-  { name: "antique", id: 1 },
-  { name: "vintage", id: 2 },
-  { name: "refurbished", id: 3 },
-];
 export default function Autocomplete() {
-  const [keyword, setKeyword] = useState();
-  const [suggest, setSuggest] = useState({suggestions:[],text:""})
+  const [keywords, setKeywords] = useState([
+    { id: 1, name: "antique" },
+    { id: 2, name: "vintage" },
+    { id: 3, name: "refurbished" },
+    { id: 4, name: "중고A급" },
+  ]);
+  const [filters, setFilters] = useState(keywords);
 
-  const onTextChanged = (e) => {
-    const value = e.target.value;
-    let suggestions = [];
-    if (value.length >0) {
-      const regex = new RegExp(`^${value}`, 'i');
-      suggestions = this.item.sort().filter(v => regex.test(v))
+  const filterList = (e) => {
+    const value = e.target.value.toLowerCase();
+    const filter = keywords.filter((keyword) =>
+      keyword.name.toLowerCase().includes(value)
+    );
+    setFilters(filter);
+    console.log(value);
+  };
+  const onEnter = (e) => {
+    if (e.key === "Enter") {
+      setKeywords([
+        ...keywords,
+        { id: keywords.length + 1, name: e.target.value },
+      ]);
     }
-    setSuggest(() => ({suggestions, text:value}))
-  }
+  };
+  const removeKeyword = (id) =>
+    setKeywords(keywords.filter((keyword) => keyword.id !== id));
+
+  const inputRef = useRef();
+
+  const onClick = (e) => {
+    inputRef.current.value = e.target.textContent;
+  };
 
   return (
     <div className="autoContainer">
-      <div className="inputContainer">
-        <input
-          type="text"
-          value={keyword || ""}
-          onChange={(e) => update("keyword", e.target.value)}
-        />
-        <div>{results}</div>
+      <div className="title">AutoComplete</div>
+      <div className="contentContainer">
+        <div className="inputContainer">
+          <input
+            ref={inputRef}
+            type="text"
+            onChange={filterList}
+            onKeyPress={onEnter}
+          ></input>
+          {inputRef.current === undefined
+            ? null
+            : inputRef.current?.value === ""
+            ? null
+            : filters.map((keyword, index) => (
+                <div
+                  className="filterContainer"
+                  key={keyword.id}
+                  onClick={onClick}
+                >
+                  <div className="filterContent">
+                    <div className="filterText">{keyword.name}</div>
+                    <img
+                      onClick={() => removeKeyword(keyword.id)}
+                      src={require("../src_assets/close.png")}
+                    />
+                  </div>
+                </div>
+              ))}
+        </div>
       </div>
     </div>
   );
-}
-
-function renderSuggestions () {
-  const 
 }
