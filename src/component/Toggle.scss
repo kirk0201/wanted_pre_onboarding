@@ -1,0 +1,78 @@
+$toggleBack: blue;
+$toggleBorder: #bcbcbc;
+.toggleContainer {
+  position: relative;
+
+  width: 800px;
+  height: 500px;
+  background-color: transparent;
+  border: 1px solid $toggleBorder;
+  margin: 0 auto;
+  margin-top: 20px;
+
+  .title {
+    font-weight: 700;
+  }
+  .contentContainer {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background-color: $toggleBorder;
+      width: 100px;
+      height: 50px;
+      border: 1px solid $toggleBorder;
+      border-radius: 30px;
+      transition: all 0.3s ease-in-out;
+      overflow: hidden;
+      cursor: pointer;
+      &::before {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: $toggleBack;
+        transition: all 0.3s linear;
+      }
+
+      .toggleCircle {
+        position: absolute;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        margin: 0 10px;
+        transition: all 0.3s linear;
+      }
+      .toggleCircle-checked {
+        display: absolute;
+        left: 40px;
+        transition: all 0.3s linear;
+      }
+    }
+  }
+  .toggle-checked {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    &::before {
+      transform: translateX(100%);
+    }
+  }
+}
+// .mouse {
+//   position: fixed;
+//   width: 70px;
+//   height: 70px;
+//   border-radius: 50%;
+//   border: 3px solid black;
+//   pointer-events: none;
+// }

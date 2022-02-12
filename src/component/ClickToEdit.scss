@@ -1,0 +1,49 @@
+.editContainer {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  border: 1px solid #808080;
+  margin: 0 auto;
+  margin-top: 20px;
+  & > .title {
+    font-weight: 700;
+  }
+  .inputContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .inputNameContainer {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      input {
+        width: 100px;
+        height: 50px;
+        margin: 10px 10px;
+        text-align: center;
+        &:focus {
+          outline-color: rgba(0, 0, 255, 0.541);
+        }
+      }
+    }
+    .inputAgeContainer {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      input {
+        width: 100px;
+        height: 50px;
+        margin: 10px 10px;
+        text-align: center;
+        &:focus {
+          outline-color: rgba(0, 0, 255, 0.541);
+        }
+      }
+    }
+    .textContent {
+      font-weight: 700;
+      margin: 20px auto;
+    }
+  }
+}

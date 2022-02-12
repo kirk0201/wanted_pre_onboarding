@@ -1,0 +1,54 @@
+.tagContainer {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  border: 1px solid #808080;
+  background-color: transparent;
+  margin: 0 auto;
+  margin-top: 20px;
+  .title {
+    font-weight: 700;
+  }
+  .contentContainer {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .tagWrapper {
+      position: relative;
+      display: flex;
+      // justify-content: center;
+      align-items: center;
+      width: 700px;
+      height: 60px;
+      border: 1px solid #808080;
+
+      ul {
+        display: flex;
+        color: white;
+        font-weight: 700;
+
+        div {
+          background-color: blue;
+          border: 1px solid black;
+          display: flex;
+          padding: 10px 30px;
+          margin-left: 10px;
+          .tagExit {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            border: 1px solid black;
+            border-radius: 50%;
+            color: black;
+            background-color: white;
+          }
+        }
+      }
+      input {
+        flex: 1;
+      }
+    }
+  }
+}
